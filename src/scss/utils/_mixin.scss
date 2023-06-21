@@ -38,14 +38,6 @@
   transform: translate(-50%, -50%);
 }
 
-
-
-@mixin posCenter{
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
 @mixin padding($spacing){
   padding: rem($spacing);
   
