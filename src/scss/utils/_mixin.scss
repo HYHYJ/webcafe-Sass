@@ -74,3 +74,35 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+// 그리드 믹스인
+@mixin gridbox($column-count: 12, $column-width: 1fr, $column-gap: 16px, $row-gap: 0 ) {
+  display: grid;
+  grid-template-columns: repeat($column-count, 1fr);
+  grid-template-rows: auto;
+  grid-column-gap: rem($column-gap);
+  grid-row-gap: rem($row-gap);
+}
+
+// ratio 믹스인
+@mixin ratio($w:16, $h:9){
+  aspect-ratio: $w / $h;
+}
+
+// 반응형 콘텐츠
+@mixin respons($width: max-width, $height: auto) {
+  #{$width}: 100%;
+  height: $height;
+}
+
+//텍스트 ... 넘치는거 
+@mixin textOver{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin fit( $posX: 50%, $posY: 50%, $fit: cover){
+  object-position: $posX $posY;
+  object-fit: $fit;
+}

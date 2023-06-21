@@ -1,1 +1,190 @@
-// home.scss
+@use "./../utils" as *;
+
+.appMain{
+  @include paddingX(20px);
+  @include paddingY(16px);
+
+  @include mobile{
+    // grid-template-columns: 100%;
+    // grid-template-rows: auto;
+    // row-gap : 16px;
+    @include gridbox(1, 100%, 16px)
+  } 
+
+  @include desktop{
+    @include containerMax;
+    // grid-template-columns: repeat(12, 1fr);
+    // grid-template-rows: auto;
+    // margin: 0 auto;
+    // row-gap: 16px;
+    // column-gap: 20px;
+    @include gridbox(12, 1fr, 16px, 20px);
+    grid-template-areas:
+    "news news news news news news news news news news news news"
+    "book book book book twitter twitter twitter twitter twitter favorite favorite favorite"
+    "book book book book . board board board board board board board"
+  }
+  //   /* 공통 스타일 */
+  // .accentBook{
+  //   color:#abd375
+  // }
+  // .accentNews{
+  //   color:#e8ca58
+  // }
+  // .accentBoard{
+  //   color:#988574
+  // }
+  // .accentFavorite{
+  //   color:#eea60a
+  // }
+  // .accentTwitter{
+  //   color:#6aaee6
+  // }
+  // .sprite{
+  //   min-height:rem(60px);
+  //   padding-left:rem(64px);
+  //   background-image:url(../images/sprite_main.png);
+  //   background-repeat:no-repeat;
+  //   font-size: rem(18px);
+  //   font-weight: 700;
+  //   @include flexbox(column, center);
+
+  //   [class*="enTitle"]{
+  //     font-size: rem(16px);
+  //     font-weight: 400;
+  //   }
+  // }
+  .spriteBook{
+    background-position:0 0
+  }
+  .spriteBoard{
+    background-position:0 -115px
+  }
+  .spriteNews{
+    background-position:0 -230px
+  }
+  .spriteFavorite{
+    background-position:0 -345px
+  }
+  .spriteTwitter{
+    background-position:0 -460px
+  }
+}
+// 메인 콘텐츠 (데스크탑에만 적용)
+@include desktop{
+  // 추천서적
+  .book {
+    grid-area: book;
+  }
+
+  //새소식
+  .news {
+    grid-area: news;
+  }
+  
+  //게시판
+  .board {
+    grid-area: board;
+  }
+  //인기 사이트
+  .favorite {
+    grid-area: favorite;
+  }
+  //트위터
+  .twitter {
+    grid-area: twitter;
+  }
+}
+
+// 추천 서적
+.book {
+
+  &__cover {
+    background: pink;
+    width: 70%;
+    @include autoMargin;
+    text-align: center;
+
+    // &Image{
+    //   @include respons;
+    // }
+  }
+
+  &__info{
+    @include flexbox($wrap: wrap, $justify: center);
+    column-gap: rem(8px);
+  }
+  @at-root .ratingStar {
+    width: 100%;
+    text-align: center;
+    font-size: rem(26px);
+
+  }
+
+  // &__cover, &__info{
+  //   @include marginX(50px);
+  // }
+  // &__cover, &__coverCaption, &__summary{
+  //   margin-top : 18px
+  // }
+  
+  // &__info, &__coverCaption{
+  //   text-align: center;
+  //   font-weight: 600;
+  // }
+  // &__info:first-child, &__info:nth-child(1){
+  //   display: inline-block
+  // }
+}
+
+// 새소식
+.news {
+  @at-root .iframeWrapper{
+    @include ratio;
+
+  }
+}
+
+// 게시판
+.board {
+  position: relative;
+
+  &__item {
+    margin: 8px 0;
+    @include flexbox;
+    column-gap: rem(8px);
+  }
+
+  &__link{
+    flex-grow: 1;
+    @include textOver;
+  }
+
+  &__date{
+    // flex-basis: fit-content;
+    white-space: nowrap;
+  }
+  &__more {
+    @include posRightTop;
+  }
+  }
+
+
+// 인기 사이트
+.favorite {
+}
+
+// 트위터
+.twitter {
+  &__userProfile{
+    @include ratio(1, 1);
+    width: 100px;
+    height: 100px;
+  }
+  &__userProfileImage{
+    @include respons(width, 100%);
+    border-radius: 50%;
+    @include fit(100%, 50%)
+    
+  }
+}
